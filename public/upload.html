@@ -4,7 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Research</title>
+    <title>Upload File</title>
+    <script>
+        async function uploadFile() {
+    const fileInput = document.getElementById("fileInput").files[0];
+    if (!fileInput) {
+        alert("Please select a file.");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = async function () {
+        const base64String = reader.result.split(',')[1]; // Extract base64 data
+        const formData = new URLSearchParams();
+        formData.append("file", base64String);
+        formData.append("mimetype", fileInput.type);
+        formData.append("filename", fileInput.name);
+
+        try {
+            await fetch("https://script.google.com/macros/s/AKfycbzs38pKcIVQQdX3-zeRBkXfVH8_MuEiuM91QboXF4RbuosPpAlcFUSet3dyR_g8x92nNg/exec", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: formData.toString(),
+                mode: "no-cors"  // ✅ Prevents "Failed to fetch" error
+            });
+
+            alert("✅ File uploaded successfully! Check your Google Drive.");
+
+            // ✅ Refresh the page after _ seconds
+            setTimeout(() => {
+                window.location.reload();
+            }, 1);
+
+        } catch (error) {
+            console.log("Upload error:", error);
+            alert("❌ Upload failed. Please try again.");
+        }
+    };
+    reader.readAsDataURL(fileInput);
+}
+
+
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -46,26 +89,33 @@
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
+
         .navbar .navbar-brand img {
-            width: 40px; /* Adjust the width of the logo */
-            height: 40px; /* Adjust the height to maintain the circle shape */
+            width: 40px;
+            /* Adjust the width of the logo */
+            height: 40px;
+            /* Adjust the height to maintain the circle shape */
             object-fit: cover;
-            border-radius: 50%; /* Makes the image circular */
+            border-radius: 50%;
+            /* Makes the image circular */
             margin-right: 10px;
         }
     </style>
+
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3">
         <div class="container">
             <!-- Logo Image -->
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHn_cZ7BsKJw5JMWR0ibGgVjkVitWBtKr1qA&s" alt="CSNHS Logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHn_cZ7BsKJw5JMWR0ibGgVjkVitWBtKr1qA&s"
+                    alt="CSNHS Logo">
                 CSNHS Research Management System
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -160,7 +210,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Upload Research (pdf only)</label>
-                                <input type="file" class="form-control" accept="image/*" id="imageUpload">
+                                <!--<input type="file" class="form-control" accept="image/*" id="imageUpload">-->
+                                <input type="file" class="form-control" id="fileInput">
                             </div>
                         </div>
 
@@ -171,8 +222,9 @@
                             </label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary mt-3" onclick="return confirmSubmission()">Submit
-                            Research</button>
+                        <button type="button" class="btn btn-primary mt-3" onclick="uploadFile(event)">Submit Research</button>
+
+
 
                     </form>
                 </div>
