@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Categories</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .category-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px; /* Fixed height for uniformity */
+            object-fit: cover; /* Ensures images cover the space without distorting */
+            border-radius: 10px;
+        }
+
+        .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-footer {
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .sidebar {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+        }
+
+        .announcement-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .calendar-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        .visitor-count {
+            margin-top: 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .announcement-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .announcement-description {
+            font-size: 1rem;
+        }
+
+        .btn-navigate {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-navigate:hover {
+            background-color: #0056b3;
+        }
+
+        .navbar .navbar-brand img {
+            width: 40px; /* Adjust the width of the logo */
+            height: 40px; /* Adjust the height to maintain the circle shape */
+            object-fit: cover;
+            border-radius: 50%; /* Makes the image circular */
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3">
+        <div class="container">
+            <!-- Logo Image -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHn_cZ7BsKJw5JMWR0ibGgVjkVitWBtKr1qA&s" alt="CSNHS Logo">
+                CSNHS Research Management System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+                    <li class="nav-item"><a class="nav-link" href="upload.html">Upload Research</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Sidebar Start -->
+            <aside class="col-md-3 sidebar">
+                <h5>Daily Calendar</h5>
+                <div class="calendar-container">
+                    <iframe src="https://calendar.google.com/calendar/embed?src=en.philippines%23holiday%40group.v.calendar.google.com&ctz=Asia/Manila" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <!-- Visitor Count Section -->
+                <div class="visitor-count">
+                    <h6>Visitor Count</h6>
+                    <p><strong>Total Visitors Today:</strong> 150</p>
+                </div>
+            </aside>
+            <!-- Sidebar End -->
+
+            <main class="col-md-9">
+                <div class="announcement-card mb-4">
+                    <h5 class="announcement-title">Latest Announcement</h5>
+                    <p class="announcement-description">Important updates regarding upcoming research submission deadlines and events.</p>
+                </div>
+
+                <div class="row">
+                    <!-- Category Cards Start -->
+                    <div class="col-md-3 mb-4">
+                        <div class="category-card">
+                            <img src="https://th.bing.com/th/id/OIP.XAkG3cog8k0i-dlGW20NUwAAAA?rs=1&pid=ImgDetMain" alt="Category Image">
+                            <div class="card-body">
+                                <h6>Biological Science</h6>
+                                <p>Explore the world of living organisms, from microbes to ecosystems.</p>
+                                <p><strong>Related Research:</strong> 8</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="research.html#biological-science" class="btn-navigate">Click here to navigate</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <div class="category-card">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTki6zhiTetMe0QoAGWhCBcy1uuHl_RDwXlKQ&s" alt="Category Image">
+                            <div class="card-body">
+                                <h6>Data and Computational Science</h6>
+                                <p>Learn how data shapes our world with computational techniques and models.</p>
+                                <p><strong>Related Research:</strong> 12</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="research.html#data-computational-science" class="btn-navigate">Click here to navigate</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <div class="category-card">
+                            <img src="https://t3.ftcdn.net/jpg/06/12/27/64/360_F_612276472_dKFY9Vij49OVouvmkilOKfP6aEwbwzZU.jpg" alt="Category Image">
+                            <div class="card-body">
+                                <h6>Physical Science</h6>
+                                <p>Study the fundamental forces and particles that make up the universe.</p>
+                                <p><strong>Related Research:</strong> 10</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="research.html#physical-science" class="btn-navigate">Click here to navigate</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <div class="category-card">
+                            <img src="https://dq8l4o3au0fto.cloudfront.net/images/Article_Images/ImageForArticle_60_1692669067139254.jpg" alt="Category Image">
+                            <div class="card-body">
+                                <h6>Robotics and Intelligent Machines</h6>
+                                <p>Delve into the world of robotics, automation, and AI-driven technologies.</p>
+                                <p><strong>Related Research:</strong> 5</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="research.html#robotics-intelligent-machines" class="btn-navigate">Click here to navigate</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Category Cards End -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

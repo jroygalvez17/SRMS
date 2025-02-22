@@ -1,0 +1,64 @@
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Sidebar */
+.sidebar {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards */
+.category-card, .upload-card, .card {
+    /*font-weight: bold;*/
+    height: 150px; /* Fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.card {
+    min-height: 220px;
+    padding: 15px;
+}
+
+.card h6, .card p {
+    /*font-weight: bold;*/
+}
+
+/* Announcements */
+.announcements {
+    background: #e9ecef;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Calendar & Visitor Count */
+.calendar-container {
+    text-align: center;
+}
+
+.visitor-count {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Navigation */
+.nav-link {
+    /*font-weight: bold;*/
+}
+
+/* Image Preview */
+.preview-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 15px;
+    display: none;
+}

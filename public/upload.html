@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Research</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .sidebar {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .preview-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .calendar-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        .visitor-count {
+            margin-top: 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar .navbar-brand img {
+            width: 40px; /* Adjust the width of the logo */
+            height: 40px; /* Adjust the height to maintain the circle shape */
+            object-fit: cover;
+            border-radius: 50%; /* Makes the image circular */
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3">
+        <div class="container">
+            <!-- Logo Image -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHn_cZ7BsKJw5JMWR0ibGgVjkVitWBtKr1qA&s" alt="CSNHS Logo">
+                CSNHS Research Management System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+                    <li class="nav-item"><a class="nav-link" href="upload.html">Upload Research</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Sidebar Start -->
+            <aside class="col-md-3 sidebar">
+                <h5>Daily Calendar</h5>
+                <div class="calendar-container">
+                    <iframe
+                        src="https://calendar.google.com/calendar/embed?src=en.philippines%23holiday%40group.v.calendar.google.com&ctz=Asia/Manila"
+                        frameborder="0" scrolling="no"></iframe>
+                </div>
+                <!-- Visitor Count Section -->
+                <div class="visitor-count">
+                    <h6>Visitor Count</h6>
+                    <p><strong>Total Visitors Today:</strong> 150</p>
+                </div>
+            </aside>
+            <!-- Sidebar End -->
+            <main class="col-md-9">
+                <div class="upload-card">
+                    <h5>Upload New Research</h5>
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Research Title</label>
+                            <input type="text" class="form-control" placeholder="Enter title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Abstract</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter abstract" required></textarea>
+                        </div>
+                        <div id="researchersList">
+                            <h6>Researchers</h6>
+                            <div class="researcher mb-3">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" placeholder="First Name" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" placeholder="Last Name" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" placeholder="Contact Number" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="email" class="form-control" placeholder="Email Address" required>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-6">
+                                        <select class="form-select grade-level" required
+                                            onchange="updateSections(this)">
+                                            <option value="">Select Grade Level</option>
+                                            <option value="7">Grade 7</option>
+                                            <option value="8">Grade 8</option>
+                                            <option value="9">Grade 9</option>
+                                            <option value="10">Grade 10</option>
+                                            <option value="11">Grade 11</option>
+                                            <option value="12">Grade 12</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select class="form-select section-dropdown" required>
+                                            <option value="">Select Section</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm mb-3" onclick="addResearcher()">Add
+                            Researcher</button>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">Category</label>
+                                <select class="form-select">
+                                    <option>Biological Science</option>
+                                    <option>Data and Computational Science</option>
+                                    <option>Physical Science</option>
+                                    <option>Robotics and Intelligent Machines</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Upload Research (pdf only)</label>
+                                <input type="file" class="form-control" accept="image/*" id="imageUpload">
+                            </div>
+                        </div>
+
+                        <div class="form-check mt-3">
+                            <input class="form-check-input" type="checkbox" id="confirmCheck" required>
+                            <label class="form-check-label" for="confirmCheck">
+                                I confirm that all provided information is correct.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-3" onclick="return confirmSubmission()">Submit
+                            Research</button>
+
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        const sections = {
+            7: ["Atlas", "Antares"],
+            8: ["Mercury", "Venus"],
+            9: ["Apollo", "Artemis"],
+            10: ["Hercules", "Orion"],
+            11: ["Einstein", "Newton"],
+            12: ["Tesla", "Hawking"]
+        };
+
+        function updateTime() {
+            document.getElementById("currentTime").textContent = new Date().toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        function addResearcher() {
+            const researcherDiv = document.createElement("div");
+            researcherDiv.classList.add("researcher", "mb-3");
+            researcherDiv.innerHTML = `
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="First Name" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Last Name" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Contact Number" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="email" class="form-control" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <select class="form-select grade-level" required onchange="updateSections(this)">
+                            <option value="">Select Grade Level</option>
+                            <option value="7">Grade 7</option>
+                            <option value="8">Grade 8</option>
+                            <option value="9">Grade 9</option>
+                            <option value="10">Grade 10</option>
+                            <option value="11">Grade 11</option>
+                            <option value="12">Grade 12</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-select section-dropdown" required>
+                            <option value="">Select Section</option>
+                        </select>
+                    </div>
+                </div>
+            `;
+            document.getElementById("researchersList").appendChild(researcherDiv);
+        }
+
+        function updateSections(selectElement) {
+            const grade = selectElement.value;
+            const sectionDropdown = selectElement.parentElement.nextElementSibling.querySelector(".section-dropdown");
+            sectionDropdown.innerHTML = "<option value=''>Select Section</option>";
+            if (sections[grade]) {
+                sections[grade].forEach(section => {
+                    sectionDropdown.innerHTML += `<option value="${section}">${section}</option>`;
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
