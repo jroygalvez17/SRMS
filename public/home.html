@@ -100,6 +100,12 @@
             margin-right: 10px;
         }
 
+        .list-group-item:hover {
+            background-color: #e9ecef;
+            color: #007bff;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
@@ -126,13 +132,21 @@
         <div class="row">
             <!-- Sidebar Start -->
             <aside class="col-md-3 sidebar">
-                <h5>Daily Calendar</h5>
                 <div class="calendar-container">
                     <iframe src="https://calendar.google.com/calendar/embed?src=en.philippines%23holiday%40group.v.calendar.google.com&ctz=Asia/Manila" frameborder="0" scrolling="no"></iframe>
                 </div>
+                <!-- Important Events Section -->
+                <div class="mt-4">
+                    <h6>Important Events</h6>
+                    <ul class="list-group">
+                        <li class="list-group-item">Research Submission Deadline - Oct 15</li>
+                        <li class="list-group-item">Science Fair - Nov 20</li>
+                        <li class="list-group-item">Project Presentation - Dec 5</li>
+                        <li class="list-group-item">Final Exams - Dec 15</li>
+                    </ul>
+                </div>
                 <!-- Visitor Count Section -->
-                <div class="visitor-count">
-                    <h6>Visitor Count</h6>
+                <div class="visitor-count mt-4">
                     <p><strong>Total Visitors Today:</strong> 150</p>
                 </div>
             </aside>
