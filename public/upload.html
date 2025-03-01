@@ -117,6 +117,27 @@
             /* Makes the image circular */
             margin-right: 10px;
         }
+
+        /* Media query for small screens */
+        @media (max-width: 600px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .content {
+                margin-left: 0;
+            }
+            .navbar-toggler {
+                display: block;
+            }
+            .navbar-collapse {
+                display: none;
+            }
+            .navbar-collapse.show {
+                display: block;
+            }
+        }
     </style>
 
 </head>
@@ -307,6 +328,15 @@
                 });
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+
+            navbarToggler.addEventListener('click', function() {
+                navbarCollapse.classList.toggle('show');
+            });
+        });
     </script>
 </body>
 
