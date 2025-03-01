@@ -85,6 +85,11 @@
                 <textarea id="commentInput" class="form-control" rows="3" placeholder="Add a comment..."></textarea>
                 <button class="btn btn-primary mt-2" onclick="addComment()">Add Comment</button>
             </div>
+            <div class="citation-section mt-4">
+                <h5>APA Citation</h5>
+                <p id="citationText"></p>
+                <button class="btn btn-secondary" onclick="copyCitation()">Copy Citation</button>
+            </div>
         </div>
     </div>
     <script>
@@ -106,11 +111,22 @@
             }
         }
 
+        function copyCitation() {
+            const citationText = document.getElementById('citationText').textContent;
+            navigator.clipboard.writeText(citationText).then(() => {
+                alert('Citation copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy citation: ', err);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             const researchTitle = decodeURIComponent(getQueryParam('title'));
             const researchLink = decodeURIComponent(getQueryParam('link'));
+            const citation = decodeURIComponent(getQueryParam('citation'));
             document.getElementById('researchTitle').textContent = researchTitle;
             document.getElementById('researchPDF').src = researchLink;
+            document.getElementById('citationText').textContent = citation;
         });
 
         document.addEventListener('DOMContentLoaded', function() {
