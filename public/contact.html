@@ -10,7 +10,7 @@
             background-color: #f8f9fa;
         }
 
-        .category-card {
+        .developer-card {
             background: #ffffff;
             padding: 20px;
             border-radius: 10px;
@@ -18,12 +18,14 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 100%;
+            height: 100%; /* Maximize the height of the card */
+            width: 80%; /* Make the cards narrower */
+            margin: auto; /* Center the cards */
         }
 
-        .category-card img {
+        .developer-card img {
             width: 100%;
-            height: 200px; /* Fixed height for uniformity */
+            height: 200px; /* Adjusted height for uniformity */
             object-fit: cover; /* Ensures images cover the space without distorting */
             border-radius: 10px;
         }
@@ -79,19 +81,6 @@
             font-size: 1rem;
         }
 
-        .btn-navigate {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .btn-navigate:hover {
-            background-color: #0056b3;
-        }
-
         .navbar .navbar-brand img {
             width: 40px; /* Adjust the width of the logo */
             height: 40px; /* Adjust the height to maintain the circle shape */
@@ -106,9 +95,21 @@
             cursor: pointer;
         }
 
-        .category-card:hover {
+        .developer-card:hover {
             transform: scale(1.05);
             transition: transform 0.3s ease;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #007bff;
+            border-radius: 50%;
         }
 
         /* Media query for small screens */
@@ -152,7 +153,7 @@
                     <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
                     <li class="nav-item"><a class="nav-link" href="research_category_checker.html">Category Checker</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
                 </ul>
             </div>
         </div>
@@ -194,64 +195,86 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <!-- Category Cards Start -->
-                    <div class="col-md-3 mb-4">
-                        <div class="category-card">
-                            <img src="https://th.bing.com/th/id/OIP.XAkG3cog8k0i-dlGW20NUwAAAA?rs=1&pid=ImgDetMain" alt="Category Image">
-                            <div class="card-body">
-                                <h6>Biological Science</h6>
-                                <p>Explore the world of living organisms, from microbes to ecosystems.</p>
-                                <p><strong>Related Research:</strong> <span id="bio-count">0</span></p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="research.html#biological-science" class="btn-navigate">Click here to navigate</a>
+                <div id="developerCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Developer Cards Start -->
+                        <div class="carousel-item active">
+                            <div class="developer-card">
+                                <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/tester-or-developer-what-suits-you-the-most.jpg" alt="Developer Image">
+                                <div class="card-body">
+                                    <h6>John Doe</h6>
+                                    <p><strong>Designation:</strong> Lead Developer</p>
+                                    <p><strong>Role:</strong> Backend Development</p>
+                                    <p><strong>Background:</strong> John has over 10 years of experience in backend development, specializing in Node.js and Python.</p>
+                                </div>
+                                <div class="card-footer social-icons">
+                                    <a href="https://facebook.com/johndoe"><img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png" alt="Facebook"></a>
+                                    <a href="mailto:johndoe@example.com"><img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email"></a>
+                                    <a href="tel:+1234567890"><img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Contact"></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-3 mb-4">
-                        <div class="category-card">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTki6zhiTetMe0QoAGWhCBcy1uuHl_RDwXlKQ&s" alt="Category Image">
-                            <div class="card-body">
-                                <h6>Data and Computational Science</h6>
-                                <p>Learn how data shapes our world with computational techniques and models.</p>
-                                <p><strong>Related Research:</strong> <span id="data-count">0</span></p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="research.html#data-computational-science" class="btn-navigate">Click here to navigate</a>
+                        <div class="carousel-item">
+                            <div class="developer-card">
+                                <img src="https://funender.com/wp-content/uploads/2019/05/Know-About-the-Dedicated-Web-Developers.jpg" alt="Developer Image">
+                                <div class="card-body">
+                                    <h6>Jane Smith</h6>
+                                    <p><strong>Designation:</strong> Frontend Developer</p>
+                                    <p><strong>Role:</strong> UI/UX Design</p>
+                                    <p><strong>Background:</strong> Jane is a skilled frontend developer with a passion for creating intuitive user interfaces using React and Angular.</p>
+                                </div>
+                                <div class="card-footer social-icons">
+                                    <a href="https://facebook.com/janesmith"><img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png" alt="Facebook"></a>
+                                    <a href="mailto:janesmith@example.com"><img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email"></a>
+                                    <a href="tel:+1234567890"><img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Contact"></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-3 mb-4">
-                        <div class="category-card">
-                            <img src="https://t3.ftcdn.net/jpg/06/12/27/64/360_F_612276472_dKFY9Vij49OVouvmkilOKfP6aEwbwzZU.jpg" alt="Category Image">
-                            <div class="card-body">
-                                <h6>Physical Science</h6>
-                                <p>Study the fundamental forces and particles that make up the universe.</p>
-                                <p><strong>Related Research:</strong> <span id="physical-count">0</span></p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="research.html#physical-science" class="btn-navigate">Click here to navigate</a>
+                        <div class="carousel-item">
+                            <div class="developer-card">
+                                <img src="https://th.bing.com/th/id/OIP.BZo28LUNsJ_H6XwYB24htgHaE8?w=1800&h=1200&rs=1&pid=ImgDetMain" alt="Developer Image">
+                                <div class="card-body">
+                                    <h6>Mike Johnson</h6>
+                                    <p><strong>Designation:</strong> Full Stack Developer</p>
+                                    <p><strong>Role:</strong> Full Stack Development</p>
+                                    <p><strong>Background:</strong> Mike has extensive experience in both frontend and backend development, working with technologies like JavaScript, PHP, and MySQL.</p>
+                                </div>
+                                <div class="card-footer social-icons">
+                                    <a href="https://facebook.com/mikejohnson"><img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png" alt="Facebook"></a>
+                                    <a href="mailto:mikejohnson@example.com"><img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email"></a>
+                                    <a href="tel:+1234567890"><img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Contact"></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-3 mb-4">
-                        <div class="category-card">
-                            <img src="https://dq8l4o3au0fto.cloudfront.net/images/Article_Images/ImageForArticle_60_1692669067139254.jpg" alt="Category Image">
-                            <div class="card-body">
-                                <h6>Robotics and Intelligent Machines</h6>
-                                <p>Delve into the world of robotics, automation, and AI-driven technologies.</p>
-                                <p><strong>Related Research:</strong> <span id="robotics-count">0</span></p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="research.html#robotics-intelligent-machines" class="btn-navigate">Click here to navigate</a>
+                        <div class="carousel-item">
+                            <div class="developer-card">
+                                <img src="https://th.bing.com/th/id/OIP.m1lmF0FhKHhkGxgy0OBuegHaE8?w=1200&h=800&rs=1&pid=ImgDetMain" alt="Developer Image">
+                                <div class="card-body">
+                                    <h6>Emily Davis</h6>
+                                    <p><strong>Designation:</strong> DevOps Engineer</p>
+                                    <p><strong>Role:</strong> Infrastructure Management</p>
+                                    <p><strong>Background:</strong> Emily is an expert in DevOps practices, ensuring smooth deployment and maintenance of applications using Docker and Kubernetes.</p>
+                                </div>
+                                <div class="card-footer social-icons">
+                                    <a href="https://facebook.com/emilydavis"><img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png" alt="Facebook"></a>
+                                    <a href="mailto:emilydavis@example.com"><img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email"></a>
+                                    <a href="tel:+1234567890"><img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Contact"></a>
+                                </div>
                             </div>
                         </div>
+                        <!-- Developer Cards End -->
                     </div>
-                    <!-- Category Cards End -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#developerCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#developerCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </main>
         </div>
@@ -267,24 +290,9 @@
                 navbarCollapse.classList.toggle('show');
             });
 
-            // Count research items per category
-            const categoryCounts = {
-                "Biological Science": 0,
-                "Data and Computational Science": 0,
-                "Physical Science": 0,
-                "Robotics and Intelligent Machines": 0
-            };
-
-            researchData.forEach(item => {
-                if (categoryCounts[item.category] !== undefined) {
-                    categoryCounts[item.category]++;
-                }
-            });
-
-            document.getElementById('bio-count').textContent = categoryCounts["Biological Science"];
-            document.getElementById('data-count').textContent = categoryCounts["Data and Computational Science"];
-            document.getElementById('physical-count').textContent = categoryCounts["Physical Science"];
-            document.getElementById('robotics-count').textContent = categoryCounts["Robotics and Intelligent Machines"];
+            // Load important events and latest announcements
+            loadImportantEvents();
+            loadLatestAnnouncement();
         });
     </script>
 </body>
