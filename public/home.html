@@ -203,7 +203,7 @@
                             <div class="card-body">
                                 <h6>Biological Science</h6>
                                 <p>Explore the world of living organisms, from microbes to ecosystems.</p>
-                                <p><strong>Related Research:</strong> 8</p>
+                                <p><strong>Related Research:</strong> <span id="bio-count">0</span></p>
                             </div>
                             <div class="card-footer">
                                 <a href="research.html#biological-science" class="btn-navigate">Click here to navigate</a>
@@ -217,7 +217,7 @@
                             <div class="card-body">
                                 <h6>Data and Computational Science</h6>
                                 <p>Learn how data shapes our world with computational techniques and models.</p>
-                                <p><strong>Related Research:</strong> 12</p>
+                                <p><strong>Related Research:</strong> <span id="data-count">0</span></p>
                             </div>
                             <div class="card-footer">
                                 <a href="research.html#data-computational-science" class="btn-navigate">Click here to navigate</a>
@@ -231,7 +231,7 @@
                             <div class="card-body">
                                 <h6>Physical Science</h6>
                                 <p>Study the fundamental forces and particles that make up the universe.</p>
-                                <p><strong>Related Research:</strong> 10</p>
+                                <p><strong>Related Research:</strong> <span id="physical-count">0</span></p>
                             </div>
                             <div class="card-footer">
                                 <a href="research.html#physical-science" class="btn-navigate">Click here to navigate</a>
@@ -245,7 +245,7 @@
                             <div class="card-body">
                                 <h6>Robotics and Intelligent Machines</h6>
                                 <p>Delve into the world of robotics, automation, and AI-driven technologies.</p>
-                                <p><strong>Related Research:</strong> 5</p>
+                                <p><strong>Related Research:</strong> <span id="robotics-count">0</span></p>
                             </div>
                             <div class="card-footer">
                                 <a href="research.html#robotics-intelligent-machines" class="btn-navigate">Click here to navigate</a>
@@ -267,6 +267,25 @@
             navbarToggler.addEventListener('click', function() {
                 navbarCollapse.classList.toggle('show');
             });
+
+            // Count research items per category
+            const categoryCounts = {
+                "Biological Science": 0,
+                "Data and Computational Science": 0,
+                "Physical Science": 0,
+                "Robotics and Intelligent Machines": 0
+            };
+
+            researchData.forEach(item => {
+                if (categoryCounts[item.category] !== undefined) {
+                    categoryCounts[item.category]++;
+                }
+            });
+
+            document.getElementById('bio-count').textContent = categoryCounts["Biological Science"];
+            document.getElementById('data-count').textContent = categoryCounts["Data and Computational Science"];
+            document.getElementById('physical-count').textContent = categoryCounts["Physical Science"];
+            document.getElementById('robotics-count').textContent = categoryCounts["Robotics and Intelligent Machines"];
         });
     </script>
 </body>
