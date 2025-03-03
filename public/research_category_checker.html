@@ -107,6 +107,42 @@
                 display: block;
             }
         }
+        .bar-graph {
+            margin-top: 20px;
+        }
+        .bar-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .bar-label {
+            width: 200px;
+            text-align: left;
+            margin-right: 10px;
+        }
+        .bar {
+            height: 30px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            flex-grow: 1;
+            margin-right: 10px;
+            position: relative;
+        }
+        .bar-inner {
+            height: 100%;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .bar-percentage {
+            width: 50px;
+            text-align: right;
+        }
     </style>
     <script src="js/researchData.js"></script>
     <script src="js/eventsAndAnnouncements.js"></script>
@@ -177,6 +213,7 @@
                             <img id="category-image" src="https://via.placeholder.com/600x200" alt="Category Image">
                         </div>
                     </div>
+                    <div id="bar-graph" class="bar-graph"></div>
                     <a href="research.html" class="btn btn-primary mt-3">See More</a>
                 </div>
             </main>
@@ -302,6 +339,34 @@
                 resultContainer.classList.remove('d-none');
                 questionContainer.classList.add('d-none');
                 nextBtn.classList.add('d-none');
+
+                // Calculate and display bar graph
+                const totalQuestions = questions.length;
+                const barGraphContainer = document.getElementById('bar-graph');
+                barGraphContainer.innerHTML = '';
+                const sortedCategories = Object.keys(categories).sort((a, b) => categories[b] - categories[a]);
+                sortedCategories.forEach(category => {
+                    const percentage = (categories[category] / totalQuestions) * 100;
+                    const barContainer = document.createElement('div');
+                    barContainer.className = 'bar-container';
+                    const barLabel = document.createElement('div');
+                    barLabel.className = 'bar-label';
+                    barLabel.textContent = category;
+                    const bar = document.createElement('div');
+                    bar.className = 'bar';
+                    const barInner = document.createElement('div');
+                    barInner.className = 'bar-inner';
+                    barInner.style.width = `${percentage}%`;
+                    barInner.textContent = `${percentage.toFixed(2)}%`;
+                    const barPercentage = document.createElement('div');
+                    barPercentage.className = 'bar-percentage';
+                    barPercentage.textContent = `${percentage.toFixed(2)}%`;
+                    bar.appendChild(barInner);
+                    barContainer.appendChild(barLabel);
+                    barContainer.appendChild(bar);
+                    barContainer.appendChild(barPercentage);
+                    barGraphContainer.appendChild(barContainer);
+                });
             }
         });
 
